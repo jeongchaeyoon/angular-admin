@@ -1,0 +1,45 @@
+<div class="analytics">
+  <h2>통계 관리</h2>
+  <p><i>Pick a menu from the list or Add a menu from input</i></p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="analytics-group-input form-group">
+        <div class="input-group">
+          <input #keywordInput (keyup.enter)="addNewItem(keywordInput.value); keywordInput.value=''" (blur)="resetValidation();"type="text" class="form-control" placeholder="접속 키워드">
+          <span class="input-group-btn">
+            <a (click)="addNewItem(keywordInput.value); keywordInput.value=''" class="btn btn-default" role="button">추가</a>
+          </span>
+        </div>
+        <div [hidden]="isEmptyInputValue" class="alert alert-warning" role="alert">{{msg}}</div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">접속 키워드 목록</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <p>한번 삭제시 모든 자료가 사라집니다. 주의하세요.</p>
+
+          <div [hidden]="isConnectLoaded" class="loading-bar-panel text-center">
+            <img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="">
+          </div>
+          <div [hidden]="isConnectLoaded === false || analytics.length" class="alert alert-warning">
+             등록된 데이터가 존재하지 않습니다.
+          </div>          
+        </div>
+        <ul class="list-group">
+          <li *ngFor="let item of analytics" class="list-group-item clearfix">
+            <a class="pull-left" role="button">
+              <h4 class="list-group-item-heading">{{item.name}}</h4>
+              <p>{{item.date}}</p>
+            </a>
+            <span class="btn-group pull-right" role="group">
+              <a [routerLink]="['/analytics-connectpath-modify', item.id]" class="btn btn-warning btn-sm" role="button">초기화</a>
+              <a [routerLink]="['/analytics-connectpath-delete', item.id]" class="btn btn-default btn-sm" role="button">삭제</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

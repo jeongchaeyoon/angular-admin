@@ -1,0 +1,46 @@
+<div class="member">
+  <h2>회원 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="member-group-input form-group">
+        <div class="input-group">
+          <input #memberGroupInput (keyup.enter)="addNewItem(memberGroupInput.value); memberGroupInput.value=''" (blur)="resetValidation()" type="text" class="form-control" placeholder="회원그룹 영문이름">
+          <span class="input-group-btn">
+            <button (click)="addNewItem(memberGroupInput.value); memberGroupInput.value=''" (blur)="resetValidation();" class="btn btn-default">추가</button>
+          </span>           
+        </div>
+        <div [hidden]="isEmptyInputValue" class="alert alert-warning" role="alert">{{msg}}</div>
+      </div>      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">회원 그롭 목록</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span> <p>한번 삭제 시 모든 자료가 사라집니다. 주의하세요.</p>
+        </div>
+        <div class="list-group">          
+          <div class="list-group-item text-center"
+            [hidden]="isMemberLoaded">
+            <img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="">
+          </div>
+          <div class="list-group-item alert-warning text-center" role="alert"            
+            [hidden]="isMemberLoaded === false || groups.length !== 0" >
+            <span>등록된 회원그룹이 존재하지 않습니다.</span>
+          </div>
+          <ul>
+            <li *ngFor="let group of groups" class="list-group-item clearfix">
+              <a [routerLink]="['/member-group', group.id]" class="pull-left">
+                <h4 class="list-group-item-heading">{{group.group_name}}</h4>
+                <p>{{group.date}}</p>
+              </a>
+              <span class="btn-group pull-right" role="group">
+                <a [routerLink]="['/member-group-modify',group.id]" class="btn btn-info btn-sm" role="button">수정</a>
+                <a [routerLink]="['/member-group-delete/',group.id]" class="btn btn-default btn-sm" role="button">삭제</a>
+              </span> 
+            </li>
+          </ul>       
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

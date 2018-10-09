@@ -1,0 +1,190 @@
+<div class="board-mod">
+  <h2>게시판 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">게시판 그롭 정보수정</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span> 
+          <p>게시판 설정을 위한 정보를 입력하세요.</p>
+          <form name="f_admin_group_add" method="post" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="_method" value="insert">
+            <div class="form-group">
+              <label for="catagoryInputName">카테고리 이름</label>
+              <p class="form-control">{{group.category}}</p>
+            </div>
+            <div class="form-group">
+              <label for="board_name">게시판 이름</label>
+              <input type="text" [(ngModel)]="group.board_name" class="form-control" name="board_name" id="board_name" placeholder="게시판 이름">    
+            </div>
+            <div class="form-group">
+              <label for="summary">설명</label>
+              <input type="text" [(ngModel)]="group.summary" class="form-control" name="summary" id="summary" placeholder="설명">           
+            </div>
+            <div class="form-group">
+              <label for="board_width">넓이</label>
+              <input type="text" [(ngModel)]="group.board_width" class="form-control" name="board_width" id="board_width" placeholder="넓이" [(ngModel)]="group.board_width">           
+            </div>
+            <div class="form-group">
+              <label for="header_path">상단 파일 경로</label>
+              <input type="text" [(ngModel)]="group.header_path" class="form-control" name="header_path" id="header_path" placeholder="상단 파일 경로"> 
+            </div>
+            <div *ngIf="groups" class="form-group">
+              <label for="skin_path">스킨 파일</label>
+              <select [(ngModel)]="group.skin_path" class="form-control" name="skin_path" id="skin_path">
+                <option *ngFor="let skin of skins" [value]="skin.skin_path" [selected]="group.skin_path === skin.skin_path">{{skin.skin_path}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="footer_path">하단 파일 경로</label>
+              <input type="text" [(ngModel)]="group.footer_path" class="form-control" name="footer_path" id="footer_path" placeholder="하단 파일 경로">           
+            </div>
+            <div class="usable-option form-group">
+              <fieldset>
+                <legend>사용 가능 옵션</legend>
+                <div class="checkbox">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #readableCheckbox name="is_readable" [checked]="group.is_readable === 'y'" (change)="group.is_readable=readableCheckbox.checked === true ? 'y' : 'n'">읽기
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #writableCheckbox name="is_writable" [checked]="group.is_writable === 'y'" (change)="group.is_writable=writableCheckbox.checked === true ? 'y' : 'n'">쓰기
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #modifiableCheckbox name="is_modifiable" [checked]="group.is_modifiable === 'y'" (change)="group.is_modifiable=modifiableCheckbox.checked === true ? 'y' : 'n'">수정
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #repliableCheckbox name="is_repliable" [checked]="group.is_repliable === 'y'" (change)="group.is_repliable=repliableCheckbox.checked === true ? 'y' : 'n'">답변
+                  </label>
+                </div>
+              </fieldset>           
+            </div>
+            <div class="usable-grade form-inline">
+              <fieldset>
+                <legend>사용 가능 레벨</legend>
+                <div class="form-group">
+                  <label for="gradeRInput">읽기</label>
+                  <select [(ngModel)]="group.grade_r" class="form-control input-sm" name="grade_r" id="gradeRInput">
+                    <option *ngFor="let level of levels" [selected]="group.grade_r === level">{{level}}</option>
+                  </select> 
+                </div>
+                <div class="form-group">
+                  <label for="gradeWInput">쓰기</label>
+                  <select [(ngModel)]="group.grade_w" class="form-control input-sm" name="grade_w" id="gradeWInput">
+                    <option *ngFor="let level of levels" [selected]="group.grade_w === level">{{level}}</option>
+                  </select>
+                </div>                                
+                <div class="form-group">
+                  <label for="gradeMInput">수정</label>
+                  <select [(ngModel)]="group.grade_m" class="form-control input-sm" name="grade_m" id="gradeMInput">
+                    <option *ngFor="let level of levels" [selected]="group.grade_m === level">{{level}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="gradeReInput">답변</label>
+                  <select [(ngModel)]="group.grade_re" class="form-control input-sm" name="grade_re" id="gradeReInput">
+                    <option *ngFor="let level of levels" [selected]="group.grade_re === level">{{level}}</option>
+                  </select>
+                </div>
+              </fieldset>
+            </div>
+            <div class="allow-nonmember form-group">
+              <fieldset>
+                <legend>비회원 사용 권한</legend>
+                <div class="radio">
+                  <label class="radio-inline">
+                    <input type="radio" #nonmemberRadioY name="allow_nonmember" value="y" (change)="group.allow_nonmember=nonmemberRadioY.value" [checked]="group.allow_nonmember === 'y'">허용
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #nonmemberRadioN name="allow_nonmember" value="n" (change)="group.allow_nonmember=nonmemberRadioN.value" [checked]="group.allow_nonmember === 'n'">비허용
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="limit-pagination form-group">
+              <label for="paginationInput">게시글 출력 개수</label>
+              <input type="text" class="form-control" name="limit_pagination" id="paginationInput" placeholder="게시글 출력 개수" [(ngModel)]="group.limit_pagination">
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>부가 기능 옵션</legend>
+                <div class="checkbox">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #commentCheckbox name="is_comment" [checked]="group.is_comment === 'y'" (change)="group.is_comment=commentCheckbox.checked === true ? 'y' : 'n'">꼬리글
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #downloadCheckbox name="is_download" [checked]="group.is_download === 'y'" (change)="group.is_download=downloadCheckbox.checked === true ? 'y' : 'n'">다운로드
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" #progressStepCheckbox name="is_progress_step" [checked]="group.is_progress_step === 'y'" (change)="group.is_progress_step=progressStepCheckbox.checked === true ? 'y' : 'n'">진행상황
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>최근 게시물 출력</legend>
+                <div class="radio">
+                  <label class="radio-inline">
+                    <input type="radio" #latestRadioY name="is_latest" value="y" (change)="group.is_latest=latestRadioY.value" [checked]="group.is_latest === 'y'">사용
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #latestRadioN name="is_latest" value="n" (change)="group.is_latest=latestRadioN.value" [checked]="group.is_latest === 'n'">사용안함
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>게시판 타입</legend>
+                <div class="radio">
+                  <label class="radio-inline">
+                    <input type="radio" #htmltypeRadio name="board_type" value="html" (change)="group.board_type=htmltypeRadioY.value" [checked]="group.board_type === 'html'">HTML
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #board_type name="board_type" value="text" (change)="group.board_type=board_type.value" [checked]="group.board_type === 'text'">TEXT
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #alltypeRadio name="board_type" value="all" (change)="group.board_type=alltypeRadio.value" [checked]="group.board_type === 'all'">HTML + TEXT
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>불량단어 범위</legend>
+                <div class="radion">
+                  <label class="radio-inline">
+                    <input type="radio" #limitTitle (change)="group.limit_choice = limitTitle.value" name="limit_choice" value="title" [checked]="group.limit_choice === limitTitle.value">제목
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #limitComment (change)="group.limit_choice = limitComment.value" name="limit_choice" value="comment" [checked]="group.limit_choice === limitComment.value">내용
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" #limitAll (change)="group.limit_choice = limitAll.value" value="all" name="limit_choice" value="all" [checked]="group.limit_choice === limitAll.value">제목 + 내용
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <label for="limitWordTextarea">불량단어</label>
+              <textarea class="form-control" name="limit_word" id="limitWordTextarea" cols="30" rows="5" [(ngModel)]="group.limit_word"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="dateInputName">생성날자</label>
+              <p class="form-control">{{group.date}}</p>
+              <input type="hidden" class="form-control" name="date" id="dateInputName" [value]="group.date" disabled>
+            </div>
+            <div class="text-center">
+              <span class="btn-group" role="group">
+                <button type="submit" class="btn btn-default btn-sm">확인</button>
+                <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+              </span> 
+            </div>  
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

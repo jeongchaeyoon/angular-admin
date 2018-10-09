@@ -1,0 +1,128 @@
+<div class="popup-mod">
+  <h2>팝업 관리</h2>
+  <p><i>Modify this page's info</i></p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">페이지 정보 수정</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span><p>바른 정보를 입력해주세요.</p>  
+          <form (keyup.enter)="modifyPopup()" name="f_admin_group_add" method="post">
+            <input type="hidden" name="_method" value="insert">
+            <div class="form-group">
+              <label for="popupNameInput">팝업 이름</label>
+              <p class="form-control">{{popup.popup_name}}</p>
+            </div>
+            <div class="form-group">
+              <label for="titleInput">제목</label>
+              <input type="text" class="form-control" name="popup_title" id="titleInput" placeholder="제목" [(ngModel)]="popup.popup_title">
+            </div>
+            <div class="form-group">
+              <fieldset>
+                <legend>노출</legend>
+                <div class="radio">
+                  <label class="radio-inline">
+                    <input #choiceRadioY type="radio" name="is_usable" value="y" (change)="popup.is_usable=choiceRadioY.value" [checked]="popup.is_usable === 'y'">허용
+                  </label>
+                  <label class="radio-inline">
+                    <input #choiceRadioN type="radio" name="is_usable" value="n" (change)="popup.is_usable=choiceRadioN.value" [checked]="popup.is_usable === 'n'">비허용
+                  </label>
+                </div>
+              </fieldset>                   
+            </div>
+            <div class="period">
+              <fieldset>
+                <legend>기간</legend>
+                <div class="form-inline">
+                  <div class="form-group">
+                    <label for="timeyearInput">Year (년)</label>
+                    <input type="text" [(ngModel)]="popup.time_year" name="time_year" id="timeyearInput" class="form-control" placeholder="년">
+                  </div>
+                  <div class="form-group">
+                    <label for="timemonthInput">Month (월)</label>
+                    <input type="text" [(ngModel)]="popup.time_month" name="time_month" id="timemonthInput" class="form-control" placeholder="월">
+                  </div>
+                  <div class="form-group">
+                    <label for="timedayInput">Day (일)</label>
+                    <input type="text" [(ngModel)]="popup.time_day" name="timedayInput" id="timedayInput" class="form-control" placeholder="일">
+                  </div>
+                  <div class="form-group">
+                    <label for="timehoursInput">Hours (시)</label> 
+                    <input type="text" [(ngModel)]="popup.time_hours" name="time_hours" id="timehoursInput" class="form-control" placeholder="시">
+                  </div>
+                  <div class="form-group">
+                    <label for="timeminutesInput">Minutes (분)</label> 
+                    <input type="text" [(ngModel)]="popup.time_minutes" name="time_minutes" id="timeminutesInput" class="form-control" placeholder="분">
+                  </div>
+                  <div class="form-group">
+                    <label for="timesecondsInput">Seconds (초)</label> 
+                    <input type="text" [(ngModel)]="popup.time_seconds" name="time_seconds" id="timesecondsInput" class="form-control" placeholder="초">     
+                  </div>
+                </div>                  
+              </fieldset>
+            </div>              
+            <div class="form-group">
+              <label for="skinSelectBox">스킨</label>
+              <select name="skin" id="skinSelectBox" class="form-control">
+                <option *ngFor="let skin of skins" value="skin.file_name" [selected]="popup.skin === skin.file_name">{{skin.file_name}}</option>
+              </select>
+            </div>
+            <div class="popup-sizing form-inline">
+              <fieldset>
+                <legend>팝업크기</legend>
+                <div class="form-group">
+                  <label for="popupwidthInput">넓이</label>
+                  <input type="text" [(ngModel)]="popup.popup_width" id="popupwidthInput" name="popup_width" class="form-control" placeholder="넓이">
+                </div>
+              </fieldset>
+            </div>
+            <div class="positioning form-inline">
+              <fieldset>
+                <legend>팝업위치</legend>
+                <div class="form-group">
+                  <label for="popuptopInput">상단</label>
+                  <input type="text" [(ngModel)]="popup.popup_top" id="popuptopInput" name="popup_top" class="form-control" placeholder="상단">
+                </div>
+                <div class="form-group">
+                  <label for="popupleftInput">좌측</label>
+                  <input type="text" [(ngModel)]="popup.popup_left" id="popupleftInput" name="popup_left" class="form-control" placeholder="좌측">
+                </div>                  
+              </fieldset>
+            </div>
+            <div class="content-spacing form-inline">
+              <fieldset>
+                <legend>내용 여백</legend>
+                <div class="form-group">
+                  <label for="skintopInput">상단</label>
+                  <input type="text" [(ngModel)]="popup.skin_top" name="skin_top" id="skintopInput" class="form-control" placeholder="상단">
+                </div>
+                <div class="form-group">
+                  <label for="skinleftInput">좌측</label>
+                  <input type="text" [(ngModel)]="popup.skin_left" name="skin_left" id="skinleftInput" class="form-control" placeholder="좌측">
+                </div>
+                <div class="form-group">
+                  <label for="skinrightInput">우측</label>
+                  <input type="text" [(ngModel)]="popup.skin_right" name="skin_right" id="skinrightInput" class="form-control" placeholder="우측">
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <label for="contentsInput">내용</label>
+              <textarea [(ngModel)]="popup.contents" name="contents" cols="30" rows="5" id="contentsInput" class="form-control" placeholder="팝업에 들어갈 내용을 입력해주세요."></textarea>       
+            </div>
+            <div class="form-group">
+              <label for="dateInputName">생성날자</label>
+              <p class="form-control">{{popup.date}}</p>
+            </div> 
+            <span class="btn-group btn-group-justified" role="group">
+              <a (click)="modifyPopup();" class="btn btn-default" role="button">확인</a>
+              <a (click)="goBack();" class="btn btn-default" role="button">취소</a>
+            </span>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.gnb .menu_panel{
+  position: relative;
+}
+.gnb .navbar-login{
+  display:none;
+  position: relative;
+  top:-10px;
+}
+.gnb .navbar-login.login_active{
+  display:inline-block;
+}
+.gnb .navbar-login a{
+  line-height: 42px;
+}
+.gnb .navbar-nav a,
+.gnb .navbar-login a{
+  color:#d3d3d3;
+  font-weight: 300;
+}
+.gnb .navbar-header > a > img {
+  margin-top: -3px;
+  width:54px;
+}
+
+.gnb .logo_img{
+  display: inline-block;
+}
+.gnb .logo_title{
+  position: relative;
+  display: inline-block;
+  top:0;
+  margin-left: 5px;
+  font-size: 17px; 
+  color: #fff;
+  vertical-align: middle;
+}
+@media (min-width: 768px) {
+  
+  .gnb .navbar-header{
+    width:150px;
+    height: 54px;
+  }
+  .gnb .navbar-login{
+    position: absolute;
+    top:0;
+    right: 0;
+  }
+
+  .gnb .navbar-header{
+    position: relative;
+  }
+  .gnb .navbar-header .navbar-brand{
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .gnb .navbar-login a{
+    line-height: 50px;
+  }
+
+  .gnb .menu_panel{
+    margin-left: 150px;
+  }
+}

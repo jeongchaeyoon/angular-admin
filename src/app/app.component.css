@@ -1,0 +1,9 @@
+.container {
+  padding-top: 54px;
+}
+footer{
+    text-align: center;
+}
+footer .small{
+    line-height: 50px;
+}

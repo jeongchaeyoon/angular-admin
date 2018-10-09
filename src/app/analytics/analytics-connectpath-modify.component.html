@@ -1,0 +1,21 @@
+<div class="analytics-del">
+  <h2>통계 관리</h2>
+  <p><i>Pick a menu from the list or Add a menu from input</i></p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">접속 카운트 초기화</span>
+        </div>
+        <div class="panel-body">
+          <p>'{{analytics.name}}' 접속 카운트를 정말로 초기화 하시겠습니까?</p>
+          <p>다시 한번 잘 확인해주세요.</p>
+          <span class="btn-group btn-group-justified" role="group">
+            <a (click)="resetHitCount()" class="btn btn-danger btn-sm" role="button">초기화</a>
+            <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

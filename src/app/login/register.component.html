@@ -1,0 +1,41 @@
+<div class="register">  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>관리자 정보 수정</h2>
+      <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admin_id.valid }">
+          <label for="admin_id">관리자 아이디</label>
+          <input type="text" class="form-control" name="admin_id" [(ngModel)]="model.admin_id" #admin_id="ngModel" placeholder="아이디" required />
+          <div *ngIf="f.submitted && !admin_id.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admin_pwd.valid }">
+          <label for="admin_pwd">관리자 비밀번호</label>
+          <input type="password" class="form-control" name="admin_pwd" [(ngModel)]="model.admin_pwd" #admin_pwd="ngModel" placeholder="비밀번호" required />
+          <div *ngIf="f.submitted && !admin_pwd.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admin_newpwd.valid }">
+          <label for="admin_newpwd">신규 비밀번호</label>
+          <input type="password" class="form-control" name="admin_newpwd" [(ngModel)]="model.admin_newpwd" #admin_newpwd="ngModel" placeholder="신규 비밀번호" required />
+          <div *ngIf="f.submitted && !admin_newpwd.valid" class="help-block">New Password is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admin_newpwd_conf.valid }">
+          <label for="admin_newpwd_conf">신규 비밀번호 확인</label>
+          <input type="password" class="form-control" name="admin_newpwd_conf" #admin_newpwd_conf="ngModel" [(ngModel)]="newPwdConf" placeholder="신규 비밀번호 확인" required />
+          <div *ngIf="f.submitted && !admin_newpwd_conf.valid" class="help-block">New Password Confirm is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !admin_email.valid }">
+          <label for="admin_email">이메일</label>
+          <input type="text" class="form-control" name="admin_email" [(ngModel)]="model.admin_email" #admin_email="ngModel" placeholder="example@streamux.com" />
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !yourhome.valid }">
+          <label for="yourhome">홈페이지 주소</label>
+          <input type="text" class="form-control" name="yourhome" [(ngModel)]="model.yourhome" #yourhome="ngModel" placeholder="yourhome.com" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">확인</button>
+          <button class="btn btn-default" (click)="goBack(); $event.stopPropagation()">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

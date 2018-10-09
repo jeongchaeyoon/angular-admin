@@ -1,0 +1,35 @@
+<nav class="gnb navbar navbar-inverse navbar-fixed-top">
+   <div class="container">
+    <div class="navbar-header">
+      <button type="button" (click)="openGnb()" class="toggle_menu navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a [routerLink]="['home']" (click)="closeGnb()" class="navbar-brand">
+        <img class="logo_img" src="assets/images/sux_logo_redwhite.svg" onerror='this.src="assets/images/sux_logo_redwhite.png"' alt="streamxux logo"><span class="logo_title">Admin</span>
+      </a>
+    </div> 
+    <div  id="navbar" class="menu_panel collapse navbar-collapse" >
+      <ul class="nav navbar-nav">
+        <li *ngFor="let menu of menus; let i=index;">
+          <a *ngIf="!menu.sub" [routerLink]="[menu.router_link]" RouterLinkActive="active" (click)="closeGnb()" role="button">
+            <span class="glyphicon {{iconList[i]}}" aria-hidden="true"></span> {{menu.name}}
+          </a>
+          <a *ngIf="menu.sub" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button">
+            <span class="glyphicon {{iconList[i]}}" aria-hidden="true"></span> {{menu.name}} <span class="caret"></span>
+          </a>
+          <ul *ngIf="menu.sub" class="dropdown-menu" role="menu">
+            <li *ngFor="let submenu of menu.sub"><a [routerLink]="[submenu.router_link]" RouterLinkActive="active" (click)="closeGnb()" role="button">{{submenu.name}}</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-login" [class.login_active]="authService.token">
+        <a [routerLink]="['login']" (click)="closeGnb()">
+          로그아웃
+        </a>        
+      </div>  
+    </div>      
+  </div> 
+</nav>

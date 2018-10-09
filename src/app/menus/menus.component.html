@@ -1,0 +1,213 @@
+<div class="sx-content sx_menu_admin" (dragEventRequest)="onDragListener($event)" dragListener>
+  <section class="section">
+    <header class="header">
+      <h2>메뉴 관리</h2>
+    </header>
+
+    <div class="row">
+      <!-- Page Menu List -->
+      <div class="page_group_panel sx_plugin_panel">
+        <div class="page_item_pane panel-group">
+
+          <div class="page_list_panel panel panel-default">
+            <div class="panel-heading clearfix"
+                (click)="togglePagePanel();">
+
+              <span class="panel-title">페이지</span>
+              <span class="glyphicon pull-right"
+                    [class.glyphicon-triangle-top]="activePage === 'page_list' && isActivePage === true"
+                    [class.glyphicon-triangle-bottom]="activePage !== 'page_list' || isActivePage !== true"></span>
+            </div>
+            <div class="page_list_body"
+                [hidden]="activePage !== 'page_list' || isActivePage !== true">
+              <div class="page_list_wrapper">
+                <img src="{{ resourceUrl }}common/images/loadingbar_stick.gif" class="img_loader" alt="로딩 중"
+                    *ngIf="!isPageLoaded"/>
+                <ul class="list-group-wrapper">
+
+                  <li class="list-group-item"
+                      *ngFor="let menu of pageMenus; let i=index">
+                    <label>
+                      <input type="checkbox" name="isChecked" class="custom_checkbox"
+                        [(ngModel)]="menu.isChecked" (change)="changeCheck();$event.preventDefault();"/>
+                      {{ menu.menu_name }}
+                    </label>
+                    <a href="{{ resourceUrl }}{{ menu.url }}" target="{{ menu.url_target}}" title="페이지로 이동">
+                       <span class="glyphicon glyphicon-new-window" alt="페이지로 이동"></span>
+                    </a>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="isPageLoaded && pageMenus.length == 0">
+                    등록된 메뉴가 존재하지 않습니다.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel-footer clearfix" [hidden]="activePage !== 'page_list' || isActivePage !== true">
+              <div class="input-group pull-left">
+                <label class="form-control-label">
+                  <input type="checkbox" name="isCheckedAll" class="custom_checkbox"
+                    [(ngModel)]="isCheckedAll" (change)="changeCheckAll();"/>
+                    모두 선택
+                </label>
+              </div>
+              <button type="button" class="btn btn-default pull-right"
+                  (click)="addPageToMenu(customModel.link_name, customModel.link_value);">메뉴에 추가</button>
+            </div>
+          </div>
+
+          <div class="user_link_panel panel panel-default">
+            <div class="panel-heading clearfix"
+                (click)="toggleCustomPagePanel();">
+               <span class="panel-title">사용자 정의 메뉴</span>
+               <span class="glyphicon pull-right"
+                  [class.glyphicon-triangle-top]="activePage === 'custom_link' &&
+                                                                  isActiveCustomPage === true"
+                  [class.glyphicon-triangle-bottom]="activePage !== 'custom_link' ||
+                                                                        isActiveCustomPage !== true"></span>
+            </div>
+            <div class="user_link_body panel-body"
+                [class.hide]="activePage !== 'custom_link' || isActiveCustomPage !== true">
+              <div class="form-group">
+                <label for="linkMenuName">링크 메뉴 이름</label>
+                <input type="text" id="linkMenuName" name="link_name" class="form-control" placeholder="링크 메뉴 이름"
+                    [(ngModel)]="customModel.link_name">
+                <div class="sx-callout sx-callout-danger alert-danger" role="alert"
+                    [hidden]="linkTextMsg === ''">{{linkTextMsg}}</div>
+              </div>
+              <div class="form-group">
+                <label for="linkInput">URL 또는 라우트 주소</label>
+                <input type="text" id="linkInput" name="link_value"  class="form-control" placeholder="링크 주소"
+                    [(ngModel)]="customModel.link_value">
+                <div [hidden]="linkURLMsg === ''" class="sx-callout sx-callout-danger alert-danger" role="alert">{{linkURLMsg}}</div>
+              </div>
+              <div class="form-group text-right" role="group">
+                <button type="button" class="btn btn-default"
+                    (click)="createCustomPage(customModel.link_name, customModel.link_value);">메뉴에 추가</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Page Menu List -->
+
+      <!-- Gnb Menu List -->
+      <div class="menu_list_panel sx_plugin_panel">
+        <div class="menu_item_pane panel panel-default">
+          <div class="panel-heading">
+            <span class="panel-title">메뉴 구조</span>
+            <div class="btn_group">
+              <button type="button" name="edit_json_menu" class="btn btn-default btn-sm" role="button"
+                  (click)="editJson()" [class.active_json_menu]="isEditing">편집하기</button>
+              <button type="button" name="cancel_json_menu" class="btn btn-default btn-sm" role="button"
+                  (click)="cancelJson()" [class.active_json_menu]="isEditing">취소하기</button>
+              <button type="button" name="save_json_menu" class="btn btn-info btn-sm" role="button"
+                  (click)="saveJson()" [class.active_json_menu]="isEditing">저장하기</button>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <p class="word_keep_all">편집하기 버튼을 클릭한 후 각 메뉴를 원하는 위치로 끌어놓으세요.</p>
+            <div class="sx-callout sx-callout-danger alert-danger" role="alert"
+                [hidden]="menuMsg === ''">
+              <div [innerHTML]="menuMsg"></div>
+            </div>
+          </div>
+
+          <div class="menu_list_wrapper">
+            <img src="{{ resourceUrl }}common/images/loadingbar_stick.gif" class="img_loader" alt="로딩 중"
+                *ngIf="!isMenuLoaded"/>
+            <ul class="list-group list-group-wrapper">
+              <li class="list-group-item  clearfix"
+                  *ngFor="let menu of gnbMenus; let i=index"
+                  [@menuState]= "menu.state"
+                  [style.padding-left.px]="textIndent*(menu.depth-1)"
+                  [style.top.px]="menu.top"
+                  [style.z-index]="menu.isDragging === true ? 10 : 0"
+                  [class.btn_draggable]="isEditing"
+                  [class.active]="menu.isDragging"
+                  [class.active_border_top]="i == dragIndex && menu.isDragging === true"
+                  [class.active_border_bottom]="i == (dragIndex + dragMenuLength) &&
+                                                                  menu.isDragging === true"
+                  #listItems>
+
+                <div class="list_item_dashed"
+                    [style.margin-left.px]="menu.margin_left"
+                    [style.padding-left.px]="menu.padding_left" >
+
+                  <div class="list_item_line"
+                      [class.list_item_line_active]="menu.isPanelInfo"
+                      [class.list_item_line_unactive]="!menu.isPanelInfo"
+                      [class.list_item_disabled]="menu.disabled">
+
+                    <div class="list_draggable_item" [attr.data-key]="i" >
+                      <button type="button" class="btn_drag btn btn_style_none" [class.hide]="!isEditing">
+                        <span class="glyphicon glyphicon-option-vertical"></span>
+                      </button>
+                      <span class="menu_label">
+                        {{menu.menu_name | stringUppercaseAt}}
+                      </span>
+                      <span class="menu_module">
+                        {{menu.module_name | stringUppercaseAt}}
+                      </span>
+                      <button type="button" class="btn_show_info btn_style_none"
+                          (click)="toggleItemInfoPanel(menu)">
+                        <span class="glyphicon icon_show_info"
+                            [class.glyphicon-triangle-top]="menu.isPanelInfo"
+                            [class.glyphicon-triangle-bottom]="!menu.isPanelInfo"></span>
+                      </button>
+                    </div>
+
+                    <div class="list_panel_info"
+                        [class.list_item_disabled]="menu.disabled">
+
+                      <div class="form-group">
+                        <label for="menuName">메뉴 이름</label>
+                        <input type="text" id="menuName" name="menu_name" class="form-control" placeholder="링크 메뉴 이름"
+                            [(ngModel)]="menu.menu_name">
+                      </div>
+                      <div class="form-group">
+                        <label for="urlInput">URL 또는 라우트 주소</label>
+                        <input type="text" id="urlInput" name="url"  class="form-control" placeholder="링크 주소"
+                            [(ngModel)]="menu.url"
+                            [class.hide]="menu.module_name !== 'customize'">
+                        <span class="form-control"
+                            [class.hide]="menu.module_name === 'customize'">
+                            원본:<a href="{{ resourceUrl }}{{ menu.url }}" target="{{ menu.url_target }}" title="페이지 이동">{{ menu.url | stringUppercaseAt }}</a></span>
+                      </div>
+                      <div class="form-group">
+                        <label for="menuNurlTargetNameame">URL Target</label>
+                        <input type="text" id="urlTargetName" name="url_target" class="form-control" placeholder="URL Target"
+                            [(ngModel)]="menu.url_target">
+                      </div>
+                      <div class="form-group text-right" role="group">
+                        <button type="button" class="btn btn-danger"
+                            (click)="removeMenu(menu)">삭제</button>
+                        <button type="button" class="btn btn-default"
+                            (click)="toggleItemInfoPanel(menu)">취소</button>
+                      </div>
+                    </div><!-- end of list_panel_info -->
+                  </div><!-- end of list_item_line -->
+                </div><!-- end of list_item_dashed -->
+              </li>
+              <li class="list-group-item"
+                  *ngIf="isMenuLoaded && gnbMenus.length == 0">
+                등록된 메뉴가 존재하지 않습니다.
+              </li>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <div class="btn_group">
+              <button type="button" name="edit_json_menu" class="btn btn-default btn-sm" role="button"
+                  (click)="editJson()" [class.active_json_menu]="isEditing">편집하기</button>
+              <button type="button" name="cancel_json_menu" class="btn btn-default btn-sm" role="button"
+                  (click)="cancelJson()" [class.active_json_menu]="isEditing" >취소하기</button>
+              <button type="button" name="save_json_menu" class="btn btn-info btn-sm" role="button"
+                  (click)="saveJson()" [class.active_json_menu]="isEditing">저장하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Gnb Menu List -->
+    </div>
+  </section>

@@ -1,0 +1,44 @@
+<div class="analytics">
+  <h2>통계 관리</h2>
+  <p><i>Pick a menu from the list or Add a menu from input</i></p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="analytics-group-input form-group">
+        <div class="input-group">
+          <input type="text" #pageviewInput (keyup.enter)="addNewItem(pageviewInput.value); pageviewInput.value=''" (blur)="resetValidation()" class="form-control" placeholder="페이지뷰 키워드">
+          <span class="input-group-btn">
+            <a (click)="addNewItem(pageviewInput.value);" class="btn btn-default" role="button">추가</a>
+          </span>
+        </div>
+        <div [hidden]="isEmptyInputValue" class="alert alert-warning" role="alert">{{msg}}</div>      
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">페이지 뷰 키워드 목록</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <p>한번 삭제 시 모든 자료가 사라집니다. 주의하세요.</p>
+          <div [hidden]="isPageviewLoaded" class="loading-bar-panel text-center">
+            <img src="assets/images/loadingbar_stick.gif" alt="" class="img_loader">
+          </div>
+          <div [hidden]="isPageviewLoaded === false || analytics.length" class="alert alert-warning" role="alert">
+            등록된 페이지뷰 키워드가 없습니다.
+          </div>            
+        </div>
+        <ul class="list-group">
+          <li *ngFor="let item of analytics" class="list-group-item clearfix">
+            <a href="#" class="pull-left" role="button" disabled>
+              <h4 class="list-group-item-heading">{{item.name}}</h4>
+              <p>{{item.date}}</p>
+            </a>
+            <span class="btn-group pull-right" role="group">
+              <a href="" [routerLink]="['/analytics-pageview-modify',item.id]" class="btn btn-warning btn-sm" role="button">초기화</a>
+              <a href="" [routerLink]="['/analytics-pageview-delete',item.id]" class="btn btn-default btn-sm" role="button">삭제</a>
+            </span>
+          </li>
+        </ul> 
+      </div>
+    </div>
+  </div>
+</div>

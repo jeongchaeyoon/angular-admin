@@ -1,0 +1,45 @@
+<div class="member">
+  <h2>회원 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="member-group-input input-group">
+        <input #memberInput (keyup.enter)="searchMember(memberInput.value); memberInput.value=''" (blur)="resetValidation()" type="text" class="form-control" placeholder="회원 이름">
+        <span class="input-group-btn">
+          <button (click)="searchMember(memberInput.value); memberInput.value=''" (blur)="resetValidation();" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </span>           
+      </div>
+      <div [hidden]="!searchMsg" class="alert alert-warning" role="alert">{{searchMsg}}</div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">회원 목록</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span> <p>한번 삭제 시 모든 자료가 사라집니다. 주의하세요.</p>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item text-center"
+            [hidden]="isMemberLoaded">
+            <img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="">
+          </div>
+          <div class="list-group-item alert-warning text-center"
+            [hidden]="isMemberLoaded === false || !msg">
+            <span>{{msg}}</span>
+          </div>
+          <ul>
+            <li *ngFor="let member of members" class="list-group-item clearfix">
+              <span class="pull-left">
+                <h4 class="list-group-item-heading">{{member.user_name}}</h4>
+                <p>2017-02-03</p>
+              </span>         
+              <span class="btn-group pull-right" role="group">
+                <a (click)="gotoMemberModify(member);" class="btn btn-info btn-sm" role="button">수정</a>
+                <a [routerLink]="['/member-delete', member.id]" class="btn btn-default btn-sm" role="button">삭제</a>
+              </span>       
+            </li>         
+          </ul>     
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

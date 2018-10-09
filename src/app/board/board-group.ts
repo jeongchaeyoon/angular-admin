@@ -1,0 +1,30 @@
+export class BoardGroup {
+
+  constructor(
+    public id: string = '',
+    public category: string = '',
+    public board_name: string = '',
+    public summary: string = '기본 게시판 그룹입니다.',   
+    public header_path: string = 'common/_header.tpl',
+    public skin_path: string = 'default',
+    public footer_path: string = 'common/_footer.tpl',
+    public allow_nonmember: string = 'y',
+    public is_readable: string = 'y',
+    public is_writable: string = 'y',
+    public is_modifiable: string = 'y',
+    public is_repliable: string = 'y',
+    public grade_r: number = 0,
+    public grade_w: number = 1,
+    public grade_m: number = 1,
+    public grade_re: number = 1,
+    public board_width: string = '100%',
+    public board_type: string = 'text',
+    public is_latest: string = 'n',
+    public limit_pagination: number = 10,
+    public is_comment: string = 'n',
+    public is_download: string = 'n',
+    public is_progress_step: string = 'n',    
+    public limit_choice: string = 'title',
+    public limit_word: string = '',
+    public date: string = '') {}
+}

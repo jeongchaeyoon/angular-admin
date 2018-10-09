@@ -1,0 +1,42 @@
+/**
+ * Swiper 3.3.1
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * 
+ * http://www.idangero.us/swiper/
+ * 
+ * Copyright 2016, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Licensed under MIT
+ * 
+ * Released on: February 7, 2016
+ */
+
+.swiper-wrapper{width:100%;height:auto !important;position:relative;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0px,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0px,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate(0px,0px);-o-transition-timing-function:ease;-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0px,0,0);transition-timing-function:ease;}
+
+.swiper-free-mode>.swiper-wrapper{margin:0px auto;width:100%;height:auto;-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;transition-timing-function:ease-out;}
+
+.swiper-wp8-horizontal{-ms-touch-action:pan-y;}
+.swiper-wp8-vertical{-ms-touch-action:pan-x;}	
+ .swiper-container{width:100%;height:auto;}
+ .swiper-container img{width:100%;}
+ .swiper-slide{width:100%;height:auto !important;float:left;}
+ /* .swiper-slide img{width:100%;height:auto;} */
+ 
+ .visual-device{margin:0px auto;width:100% !important;height:auto !important;position:relative;text-align:center}
+ .swiper-container{margin:0px;width:100% !important;height:auto !important;overflow:hidden;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;}
+ .content-slide{padding:0px;color:rgb(255,255,255);}
+ 
+ .title{font-size:25px;}
+ .swiper-pagination{text-align:center;margin-top:0px;}
+ .swiper-pagination-switch{background:#d7d7d7;margin:0px 3px;border-radius:8px;width:8px;height:8px;display:inline-block;cursor:pointer;}
+ .swiper-active-switch{background:#555;} 
+
+.swiper-slide{background-position: center;background-size: cover;}
+.swiper-slide .item-panel1{height:250px;background-color: #2e75a5}
+.swiper-slide .item-panel2{height:250px;background-color: #893f53}
+.swiper-slide .item-panel3{height:250px;background-color: #80489a}
+.swiper-slide .title{display:block;padding-top:85px;font-size: 3.5em;color: #FFFFFF}
+.swiper-slide .sub-title{display:block;padding-top:3px;font-size: 1.0625em;color:#FFFFFF;letter-spacing: 0.5em}
+

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sux-admin-angular2';
+
+  gnbState: boolean = false;
+
+  closeGnb(value: boolean): void {
+    this.gnbState = value;
+  }
 }

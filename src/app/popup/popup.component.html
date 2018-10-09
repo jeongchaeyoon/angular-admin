@@ -1,0 +1,47 @@
+<div class="popup">
+  <h2>팝업 관리</h2>
+  <p><i>Pick a menu from the list or Add a menu from input</i></p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="popup-input form-group">
+        <div class="input-group">
+          <label for="popupInput" class="sr-only">팝업 이름</label>
+          <input type="text" #popupInput (keyup.enter)="addNewItem(popupInput.value); popupInput.value=''" id="popupInput" class="form-control" placeholder="팝업 이름">
+          <span class="input-group-btn">
+            <button (click)="addNewItem(popupInput.value); popupInput.value=''" (blur)="resetValidation();" class="btn btn-default" role="button">추가</button>
+          </span>
+        </div>
+        <div [hidden]="isEmptyInputValue" class="alert alert-warning" role="alert">{{msg}}</div>
+      </div>
+      <div class="form-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="panel-title">팝업 목록</span>
+          </div>
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-info-sign"></span> 
+            <p>한번 삭제 시 모든 데이터가 사라집니다. 주의하세요.</p>
+            <div [hidden]="isPopupLoaded" class="loading-bar-panel text-center">
+              <img src="assets/images/loadingbar_stick.gif" alt="" class="img_loader">
+            </div>
+            <div [hidden]="isPopupLoaded === false || popups.length !== 0" class="alert alert-warning" role="alert">
+              등록된 팝업이 존재하지 않습니다.
+            </div>
+          </div>
+          <ul class="list-group">
+            <li *ngFor="let popup of popups" class="list-group-item clearfix">
+              <a [routerLink]="['/popup']" class="pull-left" role="button">
+                <h4 class="list-group-item-heading">{{popup.popup_name}}</h4>
+                <p>{{popup.date}}</p>
+              </a>
+              <span class="btn-group pull-right">
+                <a [routerLink]="['/popup-modify',popup.id]" role="button" class="btn btn-info btn-sm">수정</a>
+                <a [routerLink]="['/popup-delete',popup.id]" role="button" class="btn btn-default btn-sm">삭제</a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

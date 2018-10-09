@@ -1,0 +1,105 @@
+.bar {
+  fill: steelblue;
+}
+.bar:hover {
+  fill: brown;
+}
+.axis--x path {
+  display: none;
+}
+.home h1 {
+  margin-bottom: 15px;
+  font-size: 1.875em;
+}
+.home h2 {
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-size: 1.375em;
+}
+.home > p {
+  white-space: normal;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+.home .connect-hit p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.home .connect-hit p.small{
+  margin-bottom: 10px;
+}
+.home .connect-hit p span { 
+  margin-left: 10px;
+  font-weight: normal;
+}
+.home .connect-hit .svg-chart-panel {
+  position: relative;
+  height: 200px;
+}
+
+.home .connect-hit .svg-chart-panel .chart-panel {
+  position: relative;
+  margin-left:30px;
+  width:auto;
+  height: 200px;
+}
+
+.home .connect-hit .svg-chart-panel .chartbg-panel {
+  position: relative;
+  top:-200px;
+  width:auto;
+  height: 200px;
+  background-color: #f9f9f9;
+}
+
+.home .connect-hit .svg-chart-loadingbar-panel {
+  vertical-align: middle;
+  line-height: 200px;
+  background-color: #f9f9f9;
+}
+.home .connect-hit .svg-chart-notdata-panel { 
+  vertical-align: middle;
+  line-height: 200px;
+  background-color: #f9f9f9;
+}
+.home .connect-hit table th:nth-child(2),
+.home .connect-hit table td:nth-child(2){
+  width:80px;
+}
+.home .connect-hit table th:nth-child(3),
+.home .connect-hit table td:nth-child(3){
+  width:100px;
+}
+.home .connect-hit table thead tr th{
+  background-color:#efefef;
+}
+.member-new>.panel>.list-group,
+.board-latest>.panel>.list-group{
+  overflow-y: auto;
+  height: 200px;
+}
+.member-new>.panel>.list-group>p.list-group-item,
+.board-latest>.panel>.list-group>p.list-group-item,
+.member-new>.panel>.list-group>ul>.list-group-item,
+.board-latest>.panel>.list-group>ul>.list-group-item{
+  padding:15px;
+  border:0;
+}
+.member-new>.panel>.list-group>p.list-group-item,
+.board-latest>.panel>.list-group>p.list-group-item{
+  height: 100%;
+}
+.member-new>.panel>.list-group>ul>li.list-group-item,
+.board-latest>.panel>.list-group>ul>li.list-group-item{
+  list-style: circle;
+}
+.home .board-latest a h4 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.home .board-latest a span.badge {
+  position: relative;
+  top:-3px;
+}
+.home .board-latest a {
+  cursor: pointer;
+}

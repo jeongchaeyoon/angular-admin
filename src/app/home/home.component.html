@@ -1,0 +1,78 @@
+<div class="home">
+  <h1>대시보드</h1>
+  <div class="row">
+    <div class="connect-hit col-sm-12">
+      <h3 class="sr-only">방문자 수</h3>
+      <p class="small text-right">
+        <span class="label label-default label-middle">YESTER</span> {{ hits.real_yester | numberCommaAdd }}<span class="label label-info">TODAY</span> {{ hits.real_today | numberCommaAdd }}<span class="label label-primary">TOTAL</span> {{ hits.real_total | numberCommaAdd }}
+      </p>
+      <div [hidden]="isChartLoaded === false || chartData.length === 0" class="svg-chart-panel">
+        <div class="chart-panel">
+           <div [swiper]="configHitsChart" class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <svg-chart-connectday *ngIf="chartData.length" [chartData]="chartData" [options]="{ width:850, height:200}" [margin]="{ top:10, right:30, bottom:30, left:0}" (complete)="onDrawComplete()"></svg-chart-connectday>
+              </div>
+            </div>
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+        <div class="chartbg-panel">
+          <svg-chart-connectday-bg *ngIf="chartData.length" [chartData]="chartData" [options]="{ width:50, height:200}" [margin]="{ top:10, right:0, bottom:30, left:30}"></svg-chart-connectday-bg>
+        </div>
+      </div>
+      <div [hidden]="isChartLoaded" class="svg-chart-loadingbar-panel text-center">
+        <img src="assets/images/loadingbar_circle.gif" class="loading-bar-circle" alt="" />
+      </div>
+      <div [hidden]="isChartLoaded === false || chartData.length !== 0" class="svg-chart-notdata-panel text-center">
+        방문자 기록 데이터가 존재하지 않습니다.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="member-new col-sm-6">
+      <h2>신규회원</h2>
+      <div class="panel panel-default">
+        <div class="list-group">
+          <p class="list-group-item text-center"
+            [class.hide]="isBoardLoaded">
+            <img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="" />
+          </p>
+          <p class="list-group-item"
+            [class.hide]="isMemberLoaded === false || members.length !== 0">
+            신규회원이 존재하지 않습니다.
+          </p>
+          <ul>
+            <li class="list-group-item"
+              *ngFor="let member of members" >
+              <a>{{member.user_name}} | {{member.date}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="board-latest col-sm-6">
+      <h2>최근 게시물</h2>
+      <div class="panel panel-default">
+        <div class="list-group">
+          <p class="list-group-item text-center"
+            [class.hide]="isBoardLoaded">
+            <img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="" />
+          </p>
+          <p class="list-group-item"
+            [class.hide]="isBoardLoaded === false || boards.length !== 0">
+            최근 등록된 게시물이 존재하지 않습니다.
+          </p>
+          <ul>
+            <li class="list-group-item"
+              *ngFor="let board of boards" >
+              <h4 class="list-group-item-heading">{{board.title}} <span class="badge">10</span></h4>
+              <p>{{board.contents}}</p>
+              <p>{{board.user_name}} | {{board.date}} | hit {{board.readed_count}} | vote {{board.voted_count}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

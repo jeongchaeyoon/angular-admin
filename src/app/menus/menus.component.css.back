@@ -1,0 +1,335 @@
+.panel,
+.list-group{
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+.menus{
+  word-break: break-all;
+}
+.menus,
+.menus .row{
+  position: relative;  
+}
+
+.menus .swiper-slide {
+  width:100%;
+}
+.menus .panel .panel-heading {
+  padding-bottom: 5px;
+}
+.menus .panel .panel-body {
+  padding: 10px 10px;
+}
+.menus .list-group-wrapper {
+  padding:0;
+}
+
+.menus .list-group-wrapper .glyphicon-new-window{    
+  color:#3e3e3e;
+  border: 0 solid #fff;
+  font-size: 0.875em;
+}
+.menus .list-group .alert {
+  margin-bottom: 0;
+}
+.menus .panel .menue_list_wrapper,
+.menus .panel .page_list_wrapper{
+  position: relative;
+}
+.menus .panel .panel-body > p{
+  position: relative;
+  padding-top: 15px;
+}
+
+/* page menu list */
+.menus .row {
+  padding-top:15px;
+}
+.menus .menu_list_panel li .list_item_line .icon_show_info,
+.menus .list-group-wrapper .glyphicon-new-window,
+.menus .page_group_panel .panel-heading,
+.menus .page_group_panel .glyphicon{
+  font-size: 0.75em;
+}
+.menus .page_group_panel .panel-heading{
+  position: relative;
+  padding: 0 10px;
+  line-height: 45px;
+  height: 45px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.menus .page_group_panel .panel-heading .glyphicon{
+  position: absolute;
+  top:50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+.menus .page_group_panel li {
+  padding: 10px 15px 2px 15px;
+  border: 0 solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  word-break: break-all;
+}
+.menus .page_list_panel .custom_checkbox{
+  border: 1px solid #b4b9be;
+  background: #fff;
+  color: #555;
+  clear: none;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 0;
+  height: 16px;
+  margin: -4px 4px 0 0;
+  outline: 0;
+  padding: 0!important;
+  text-align: center;
+  vertical-align: middle;
+  width: 16px;
+  min-width: 16px;
+  -webkit-appearance: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+  transition: .05s border-color ease-in-out;
+}
+.menus .page_list_panel .custom_checkbox:checked{
+  border-color:#5b9dd9;
+  box-shadow:0 0 2px rgba(30,140,190,.8)
+}
+.menus .page_list_panel .custom_checkbox:checked:before{
+  float:left;
+  display:inline-block;
+  vertical-align:middle;
+  width:16px;
+  font:400 14px/1 dashicons;
+  speak:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  content:"\2714";
+  color:#1e8cbe
+}
+.menus .page_list_panel .page_list_body{
+  padding: 10px;
+}
+.menus .page_list_panel .page_list_body .page_list_wrapper{
+  overflow:auto;
+  height:240px;
+  border:1px solid #ddd;
+  background-color: #fdfdfd;
+  padding-left: 0;
+}
+.menus .page_list_panel .page_list_body label {
+  font-weight: normal;
+  cursor: pointer;
+}
+.menus .page_list_panel .panel-footer{
+  background-color: #fff;
+}
+.menus .page_list_panel .panel-footer .input-group{
+  margin-top: 5px;
+}
+.menus .page_list_panel .panel-footer .input-group label{
+  margin-left: 0;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+/* user link panel */
+.menus .user_link_panel .user_link_body{
+  padding-top: 30px;
+}
+.menus .user_link_panel .sx-callout{
+  margin-top:5px;
+}
+
+/* gnb menu list */
+.menus .menu_list_panel .panel-heading,
+.menus .menu_list_panel .panel-footer{
+  position: relative;
+  padding:0 10px;
+  line-height:55px;
+  height:55px;
+  vertical-align: middle;
+}
+.menus .menu_list_panel .panel-heading .btn,
+.menus .menu_list_panel .panel-footer .btn{
+  padding: 8px 10px;
+}
+.menus .menu_list_panel .btn_group{
+  position: absolute;
+  top: 50%;
+  right:10px;
+  transform: translateY(-50%);
+}
+.menus .menu_list_panel .btn_group button[name=edit_json_menu]{
+  display: inline-block;
+}
+.menus .menu_list_panel .btn_group button[name=cancel_json_menu],
+.menus .menu_list_panel .btn_group button[name=save_json_menu]{
+  display: none;
+}
+.menus .menu_list_panel .btn_group button[name=edit_json_menu].active_json_menu{
+  display: none;
+}
+.menus .menu_list_panel .btn_group button[name=cancel_json_menu].active_json_menu,
+.menus .menu_list_panel .btn_group button[name=save_json_menu].active_json_menu{
+  display: inline-block;
+}
+
+.menus .menu_list_panel .panel-body .word_keep_all{
+  padding-left: 5px;
+} 
+.menus .menu_list_panel .menu_list_wrapper{
+  position: relative;
+  margin:10px 10px;
+  min-height: 206px;
+}
+.menus .menu_list_panel .menu_list_wrapper .list-group-wrapper{
+  padding:0;
+}
+
+.menus .menu_list_panel li {
+  position: relative;
+  padding:0;
+  border: 0 solid transparent;
+  border-radius: 0;
+}
+.menus .menu_list_panel li .list_item_dashed {
+  /* padding-left 시작 값은 menus.component.ts 파일에 정의 됨 */
+  padding:5px 5px;
+  background-color: #fff;
+}
+.menus .menu_list_panel li .list_item_line{
+  overflow: hidden;
+  padding: 0 ;
+  font-weight: 600;
+  font-family: "NanumGoThic",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  line-height: 38px;
+  border:1px solid #d3d3d3;
+  background-color: #f9f9f9;
+}
+
+.menus .menu_list_panel li .list_draggable_item{
+  position: relative;
+  height:48px;
+}
+.menus .menu_list_panel li .menu_label,
+.menus .menu_list_panel li .menu_module {
+  position: relative;
+  display: inline-block;
+}
+.menus .menu_list_panel li .menu_label{
+  top:3px;
+  margin-left: 10px;
+}
+.menus .menu_list_panel li .menu_module {
+  position: absolute;
+  display: inline-block;
+  top:3px;
+  right:45px;
+  font-size: 0.938em;
+  font-weight: 300;
+  color: #3e3e3e;
+}
+.menus .menu_list_panel li .list_panel_info {
+  padding: 10px 10px;
+  width:100%;
+  background-color: #fff;
+  font-size: 0.875em;
+}
+.menus .menu_list_panel li .list_panel_info .form-group label{
+  line-height: 20px;
+  vertical-align: bottom;
+}
+.menus .menu_list_panel li .list_panel_info .form-group span{
+  font-weight: 300;
+}
+.menus .menu_list_panel li .list_item_line_active{
+  height: auto;
+}
+.menus .menu_list_panel li .list_item_line_unactive{
+  height: 48px;
+}
+.menus .menu_list_panel li .list_item_line_active .list_panel_info{
+  display: inline-block;
+}
+.menus .menu_list_panel li .list_item_line_unactive .list_panel_info{
+  display: none;
+}
+.menus .menu_list_panel li .list_panel_info input,
+.menus .menu_list_panel li .list_panel_info label{
+  font-weight: normal;
+}
+.menus .menu_list_panel li .btn_show_info{
+  position: absolute;
+  display: inline-block;
+  top:4px;
+  right:0;
+}
+.menus .menu_list_panel li .btn_show_info .icon_show_info{
+  padding:10px 10px;
+}
+
+.menus .menu_list_panel li.btn_draggable .list_draggable_item{
+  cursor: move;
+}
+.menus .menu_list_panel li.btn_draggable.active {
+  color: #333;
+  background-color: transparent;
+
+  font-weight: normal;
+  text-shadow: none;
+  background-image: none;
+  background-repeat: repeat-x;  
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2b669a', GradientType=0); 
+}
+
+.menus .menu_list_panel li.btn_draggable.active_border_top .list_item_dashed{
+  border-top: 1px dashed #9e9e9e;
+}
+.menus .menu_list_panel li.btn_draggable.active .list_item_dashed {
+  border-left: 1px dashed #9e9e9e;
+  border-right: 1px dashed #9e9e9e;
+}
+.menus .menu_list_panel li.btn_draggable.active_border_bottom .list_item_dashed{
+  border-bottom: 1px dashed #9e9e9e;
+}
+
+.menus .menu_list_panel li.btn_draggable .btn_drag{
+  margin-top:7px;
+  cursor: move;
+}
+.menus .menu_list_panel li.btn_draggable .btn_drag:focus,
+.menus .menu_list_panel li.btn_draggable .btn_drag:active {
+  -webkit-box-shadow: none;
+          -o-box-shadow: none;
+              box-shadow: none;
+}
+.menus .menu_list_panel li.btn_draggable .menu_label{
+  margin-left: 0;
+}
+.menus .menu_list_panel li.btn_draggable.active .list_item_line,
+.menus .menu_list_panel li.btn_draggable .list_item_line:focus,
+.menus .menu_list_panel li.btn_draggable .list_item_line:active,
+.menus .menu_list_panel li.btn_draggable .list_item_line:hover{
+  border-color: #939393;
+  background-color: #f3f3f3;
+}
+
+.menus .menu_list_panel li .list_item_disabled,
+.menus .menu_list_panel li.btn_draggable.active .list_item_disabled,
+.menus .menu_list_panel li.btn_draggable .list_item_disabled:focus,
+.menus .menu_list_panel li.btn_draggable .list_item_disabled:active,
+.menus .menu_list_panel li.btn_draggable .list_item_disabled:hover{
+  background-color: #f72a2d;
+}
+
+.menus .output-panel .panel-heading {
+  line-height: 30px;
+  padding:5px 5px 5px 12px;
+}
+.menus .output-panel .panel-body {
+  padding:15px;
+}

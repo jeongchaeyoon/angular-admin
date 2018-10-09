@@ -1,0 +1,83 @@
+.document .row,
+.document-mod .row,
+.document-del .row{
+  padding-top:15px;
+}
+.document .document-input {
+  margin-bottom: 10px;
+}
+.document .panel .panel-body {
+  padding-bottom: 0;
+}
+.document .panel .list-group .list-group-item{
+  height:65px;
+}
+.document .panel .list-group div.list-group-item span{
+  line-height: 46px;
+  text-align: center;
+  vertical-align: middle;
+}
+.document ul li.list-group-item {
+  padding-bottom: 0;
+}
+.document ul li span.btn-group {
+  top: 6px;
+}
+.document .panel .panel-body > p{
+  position: relative;
+  top:-20px;
+  left: 20px;
+  padding-right: 20px;
+}
+.document-mod form {
+  margin-top: 25px;
+}
+.document-mod .checkbox,
+.document-mod .radio {
+  margin-top:0;
+}
+.document-mod .additional-info {
+  margin-top: 35px;
+}
+.document-mod .label-heading {
+  font-weight: bold;
+}
+.document-mod legend {
+  margin-bottom: 15px;
+  font-size: 1em;
+  font-weight: bold;
+}
+.document-mod fieldset {
+  margin-bottom: 20px;
+}
+.document-mod .usable-grade label{
+  font-weight: normal;
+}
+.document-mod textarea{
+  padding: 15px 15px;
+  border:1px solid #ddd;
+  border-top:0 solid transparent;
+
+  -webkit-border-radius: 0;
+          -o-border-radius: 0;
+              border-radius: 0;
+  -webkit-box-shadow: none;
+          -o-box-shadow: none;
+              box-shadow: none;
+}
+.document-mod .btn-submit {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.document-mod .btn-group,
+.document-del .btn-group {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+@media (min-width: 768px) { 
+  .document-mod .usable-grade select{
+    margin-left: 2px;
+    margin-right: 10px;
+    width: 50px;
+  }
+}

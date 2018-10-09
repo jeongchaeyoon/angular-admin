@@ -1,0 +1,75 @@
+.popup .popup-input {
+  margin-bottom: 10px;
+}
+.popup .panel .panel-body {
+  padding-bottom: 0;
+}
+.popup .panel .panel-body > p,
+.popup-mod .panel .panel-body > p{
+  position: relative;
+  top:-20px;
+  left: 20px;
+  padding-right: 20px;
+}
+.popup ul.list-group {
+  padding-bottom: 0;
+}
+.popup ul li.list-group-item {
+  padding-bottom: 0px;
+}
+.popup ul li span.btn-group {
+  top: 6px;
+}
+.popup-mod form {
+  margin-top: 25px;
+}
+.popup-mod .checkbox,
+.popup-mod .radio {
+  margin-top:0;
+}
+.popup-mod .additional-info {
+  margin-top: 35px;
+}
+.popup-mod .label-heading {
+  font-weight: bold;
+}
+.popup-mod legend {
+  margin-bottom: 15px;
+  font-size: 1em;
+  font-weight: bold;
+}
+.popup-mod fieldset {
+  margin-bottom: 20px;
+}
+
+.popup-mod .period label,
+.popup-mod .popup-sizing label,
+.popup-mod .positioning label,
+.popup-mod .content-spacing label{
+  font-weight: normal;
+}
+.popup-mod .period input{
+  text-align: right;
+  margin-right: 5px;
+}
+.popup-mod .btn-group,
+.popup-del .btn-group {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+@media (min-width: 768px) { 
+  .popup-mod .period select{
+    margin-left: 2px;
+    margin-right: 10px;
+    width: 50px;
+  }
+
+  .popup-mod .positioning .form-group,
+  .popup-mod .period .form-group,
+  .popup-mod .content-spacing .form-group{
+    padding-right: 10px;
+  }
+  .popup-mod .period label {
+    line-height: 36px;
+  }
+}

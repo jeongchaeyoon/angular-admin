@@ -1,0 +1,47 @@
+<div class="document">
+  <h2>페이지 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="document-input form-group">
+        <div class="input-group">
+          <label for="documentInput" class="sr-only">카테고리 영문 이름</label>
+          <input type="text" #documentInput (keyup.enter)="addNewItem(documentInput.value); documentInput.value=''" (blur)="resetValidation()" id="documentInput" class="form-control" placeholder="카테고리 영문 이름">
+          <span class="input-group-btn">
+            <button (click)="addNewItem(documentInput.value); documentInput.value=''" (blur)="resetValidation();" class="btn btn-default">추가</button>
+          </span>
+        </div>
+        <div [hidden]="msg === ''" class="alert alert-warning" role="alert">{{msg}}</div>      
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">페이지 목록</span>
+        </div>
+        <div class="panel-body">
+          <span class="glyphicon glyphicon-info-sign"></span> <p>한번 삭제 시 모든 자료가 사라집니다. 주의하세요</p>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item text-center"
+            [hidden]="isDocumentLoaded" >
+            <img src="assets/images/loadingbar_stick.gif" alt="" class="img_loader">
+          </div>
+          <div class="list-group-item alert-warning text-center"
+            [class.hide]="isDocumentLoaded === false || documents.length !== 0">
+            <span>등록된 페이지가 존재하지 않습니다.</span>
+          </div>
+          <ul>
+            <li *ngFor="let document of documents" class="list-group-item clearfix">
+              <a href="{{domainUrl}}{{document.category}}" target="_blank" class="pull-left" role="button">
+                <h4 class="list-group-item-heading">{{document.document_name}}</h4>
+                <p>{{document.date}}</p>
+              </a>
+              <span class="btn-group pull-right" role="group">
+                <a [routerLink]="['/document-modify', document.id]" class="btn btn-info btn-sm" role="button">수정</a>
+                <a [routerLink]="['/document-delete', document.id]" class="btn btn-default btn-sm" role="button">삭제</a>
+              </span>           
+            </li>
+          </ul>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

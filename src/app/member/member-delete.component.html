@@ -1,0 +1,22 @@
+<div class="member-del">
+  <h2>회원 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <span class="panel-title">회원 삭제</span>
+        </div>
+        <div class="panel-body">
+          <span>
+            <p>' {{member.user_name}} '회원을 정말로 삭제 하시겠습니까?</p>
+            <p>다시 한번 잘 확인해주세요.</p>
+          </span>   
+          <span class="btn-group btn-group-justified" role="group">
+            <a (click)="deleteMember(0);" class="btn btn-danger btn-sm" role="button">삭제</a>
+            <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+          </span>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

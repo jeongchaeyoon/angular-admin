@@ -1,0 +1,30 @@
+.analytics .analytics-group-input {
+  margin-bottom: 10px;
+}
+.analytics .panel .panel-body {
+  padding-bottom: 0;
+}
+.analytics .panel .panel-body > p,
+.analytics-mod .panel .panel-body > p{
+  position: relative;
+  top:-20px;
+  left: 20px;
+  padding-right: 20px;
+}
+.analytics ul li.list-group-item {
+  padding-bottom: 0px;
+}
+.analytics ul li span.btn-group {
+  top: 6px;
+}
+.analytics-mod form {
+  margin-top: 25px;
+}
+.analytics-mod .additional-info {
+  margin-top: 35px;
+}
+.analytics-mod .btn-group,
+.analytics-del .btn-group {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}

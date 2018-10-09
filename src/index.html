@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>SuxAdminAngular2</title>
+  <title>SuxAdmin</title>
   <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+  <link rel="stylesheet" href="assets/css/sux.min.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <script>
+    var sux_resource_url = 'http://localhost:8888/sux/';
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <div class="wrapper">
+    <app-root><img src="assets/images/loadingbar_stick.gif" class="img_loader" alt="로딩 중" /></app-root>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
 </body>
 </html>

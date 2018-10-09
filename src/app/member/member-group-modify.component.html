@@ -1,0 +1,43 @@
+<div class="member-mod">
+  <h2>회원 관리</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="panel-title">회원 그롭 정보수정</span>
+        </div>
+        <div class="panel-body">
+          <span>주의 : </span>
+          <span>바른 정보를 입력해주세요.</span>
+          <form (keydown.enter)="modifyMemberGroup()" name="f_admin_group_add" method="post">
+            <input type="hidden" name="_method" value="insert">
+            <div class="form-group">
+              <label for="goupInputName">그룹 이름</label>
+              <input type="text" [(ngModel)]="group.group_name" class="form-control" name="group_name" id="goupInputName" placeholder="그룹 이릅">
+            </div>
+            <div class="form-group">
+              <label for="summaryInputName">요약설명</label>
+              <input type="text" [(ngModel)]="group.summary" class="form-control" name="summary" id="summaryInputName" placeholder="요약 설명">           
+            </div>
+            <div class="form-group">
+              <label for="headerPathInputName">상단 파일 경로</label>
+              <input type="text" [(ngModel)]="group.header_path" class="form-control" name="header_path" id="headerPathInputName" placeholder="상단 파일 경로">           
+            </div>
+            <div class="form-group">
+              <label for="footerPathInputName">하단 파일 경로</label>
+              <input type="text" [(ngModel)]="group.footer_path" class="form-control" name="footer_path" id="footerPathInputName" placeholder="하단 파일 경로">           
+            </div>
+            <div class="form-group">
+              <label for="noneFormName">생성날자</label>
+              <div class="form-control">{{group.date}}</div>
+            </div>
+            <div class="btn-group btn-group-justified" role="group">
+              <a (click)="modifyMemberGroup();" class="btn btn-default btn-sm" role="button">확인</a>
+              <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+            </div>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

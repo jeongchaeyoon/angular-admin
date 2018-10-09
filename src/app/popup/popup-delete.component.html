@@ -1,0 +1,23 @@
+<div class="popup-del">
+  <h2>팝업 관리</h2>
+  <p><i>Delete This Popup's Info from Popup List</i></p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <span class="panel-title">팝업 삭제</span>
+        </div>
+        <div class="panel-body">
+          <span>
+            <p>'{{popup.popup_name}}' 팝업을 정말로 삭제 하시겠습니까?</p>
+            <p>다시 한번 잘 확인해주세요.</p>
+          </span>   
+          <span class="btn-group btn-group-justified" role="group">
+            <a (click)="deletePopup(popup.id);" class="btn btn-danger btn-sm" role="button">삭제</a>
+            <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+          </span>       
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>
