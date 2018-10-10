@@ -20,7 +20,7 @@ export class BoardGroupModifyComponent implements OnInit {
   group: BoardGroup = null;
   skins: BoardSkin[] = [];
 
-  private levels = [];
+  levels: Number[] = [];
 
   constructor(
     private location: Location,

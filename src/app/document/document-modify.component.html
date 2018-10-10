@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
               <label for="summaryInputName">설명</label>
-              <input type="text" [(ngModel)]="document.summary" class="form-control" name="summary" id="summaryInputName" placeholder="설명">           
+              <input type="text" [(ngModel)]="document.summary" class="form-control" name="summary" id="summaryInputName" placeholder="설명">
             </div>
             <div class="form-group">
               <fieldset>
@@ -33,22 +33,22 @@
                     <input #readableRadioN (change)="document.is_readable=readableRadioN.value" type="radio" name="is_readable" value="n" [checked]="document.is_readable === 'n'">비허용
                   </label>
                 </div>
-              </fieldset>                           
+              </fieldset>
             </div>
             <div class="form-group">
               <label for="boardWidthInputName">넓이</label>
-              <input type="text" [(ngModel)]="document.document_width" class="form-control" name="board_width" id="boardWidthInputName" placeholder="넓이">           
+              <input type="text" [(ngModel)]="document.document_width" class="form-control" name="board_width" id="boardWidthInputName" placeholder="넓이">
             </div>
             <div class="form-group">
               <label for="headerPathInputName">상단 파일 경로</label>
-              <input type="text" [(ngModel)]="document.header_path" class="form-control" name="header_path" id="headerPathInputName" placeholder="상단 파일 경로">  
+              <input type="text" [(ngModel)]="document.header_path" class="form-control" name="header_path" id="headerPathInputName" placeholder="상단 파일 경로">
             </div>
             <div class="form-group">
               <label for="templateType" class="control-label label_width">템플릿 타입</label>
               <select id="templateType" name="template_type" class="form-control"
                   [(ngModel)]="document.template_type"
                   [disabled]="document.template_mode === 'p'"
-                  (change)="changeTemplate(skin)">
+                  (change)="changeTemplate()">
                 <option value="{{skin}}" *ngFor="let skin of skinList">{{skin}}</option>
               </select>
             </div>
@@ -59,13 +59,13 @@
                   <label class="radio-inline">
                     <input type="radio" name="template_mode" value="o"
                         #templateModeO
-                        (change)="document.template_mode=templateModeO.value" 
+                        (change)="document.template_mode=templateModeO.value"
                         [checked]="document.template_mode === 'o'">Original
                   </label>
                   <label class="radio-inline">
                      <input type="radio" name="template_mode" value="p"
                         #templateModeP
-                        (change)="document.template_mode=templateModeP.value" 
+                        (change)="document.template_mode=templateModeP.value"
                         [checked]="document.template_mode === 'p'">Published
                   </label>
                 </div>
@@ -85,21 +85,21 @@
                   <textarea name="content_{{tab}}" rows="15" class="form-control"
                       *ngFor="let tab of tabList"
                       [class.hide]="activeTab !== tab" >{{document['content_'+tab]}}</textarea>
-                </div>                
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="footerPathInputName">하단 파일 경로</label>
-              <input type="text" [(ngModel)]="document.footer_path" class="form-control" name="footer_path" id="footerPathInputName" placeholder="하단 파일 경로">            
+              <input type="text" [(ngModel)]="document.footer_path" class="form-control" name="footer_path" id="footerPathInputName" placeholder="하단 파일 경로">
             </div>
             <div class="text-center">
               <span class="btn-group" role="group">
                 <button type="submit" class="btn btn-default btn-sm">확인</button>
-                <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>  
-              </span> 
-            </div>                                    
+                <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
+              </span>
+            </div>
           </form>
-        </div>        
+        </div>
       </div>
     </div>
   </div>

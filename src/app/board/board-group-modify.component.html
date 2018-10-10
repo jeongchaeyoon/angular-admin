@@ -7,7 +7,7 @@
           <span class="panel-title">게시판 그롭 정보수정</span>
         </div>
         <div class="panel-body">
-          <span class="glyphicon glyphicon-info-sign"></span> 
+          <span class="glyphicon glyphicon-info-sign"></span>
           <p>게시판 설정을 위한 정보를 입력하세요.</p>
           <form name="f_admin_group_add" method="post" (ngSubmit)="onSubmit()">
             <input type="hidden" name="_method" value="insert">
@@ -17,19 +17,19 @@
             </div>
             <div class="form-group">
               <label for="board_name">게시판 이름</label>
-              <input type="text" [(ngModel)]="group.board_name" class="form-control" name="board_name" id="board_name" placeholder="게시판 이름">    
+              <input type="text" [(ngModel)]="group.board_name" class="form-control" name="board_name" id="board_name" placeholder="게시판 이름">
             </div>
             <div class="form-group">
               <label for="summary">설명</label>
-              <input type="text" [(ngModel)]="group.summary" class="form-control" name="summary" id="summary" placeholder="설명">           
+              <input type="text" [(ngModel)]="group.summary" class="form-control" name="summary" id="summary" placeholder="설명">
             </div>
             <div class="form-group">
               <label for="board_width">넓이</label>
-              <input type="text" [(ngModel)]="group.board_width" class="form-control" name="board_width" id="board_width" placeholder="넓이" [(ngModel)]="group.board_width">           
+              <input type="text" [(ngModel)]="group.board_width" class="form-control" name="board_width" id="board_width" placeholder="넓이" [(ngModel)]="group.board_width">
             </div>
             <div class="form-group">
               <label for="header_path">상단 파일 경로</label>
-              <input type="text" [(ngModel)]="group.header_path" class="form-control" name="header_path" id="header_path" placeholder="상단 파일 경로"> 
+              <input type="text" [(ngModel)]="group.header_path" class="form-control" name="header_path" id="header_path" placeholder="상단 파일 경로">
             </div>
             <div *ngIf="groups" class="form-group">
               <label for="skin_path">스킨 파일</label>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
               <label for="footer_path">하단 파일 경로</label>
-              <input type="text" [(ngModel)]="group.footer_path" class="form-control" name="footer_path" id="footer_path" placeholder="하단 파일 경로">           
+              <input type="text" [(ngModel)]="group.footer_path" class="form-control" name="footer_path" id="footer_path" placeholder="하단 파일 경로">
             </div>
             <div class="usable-option form-group">
               <fieldset>
@@ -58,7 +58,7 @@
                     <input type="checkbox" #repliableCheckbox name="is_repliable" [checked]="group.is_repliable === 'y'" (change)="group.is_repliable=repliableCheckbox.checked === true ? 'y' : 'n'">답변
                   </label>
                 </div>
-              </fieldset>           
+              </fieldset>
             </div>
             <div class="usable-grade form-inline">
               <fieldset>
@@ -67,14 +67,14 @@
                   <label for="gradeRInput">읽기</label>
                   <select [(ngModel)]="group.grade_r" class="form-control input-sm" name="grade_r" id="gradeRInput">
                     <option *ngFor="let level of levels" [selected]="group.grade_r === level">{{level}}</option>
-                  </select> 
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="gradeWInput">쓰기</label>
                   <select [(ngModel)]="group.grade_w" class="form-control input-sm" name="grade_w" id="gradeWInput">
                     <option *ngFor="let level of levels" [selected]="group.grade_w === level">{{level}}</option>
                   </select>
-                </div>                                
+                </div>
                 <div class="form-group">
                   <label for="gradeMInput">수정</label>
                   <select [(ngModel)]="group.grade_m" class="form-control input-sm" name="grade_m" id="gradeMInput">
@@ -140,7 +140,7 @@
                 <legend>게시판 타입</legend>
                 <div class="radio">
                   <label class="radio-inline">
-                    <input type="radio" #htmltypeRadio name="board_type" value="html" (change)="group.board_type=htmltypeRadioY.value" [checked]="group.board_type === 'html'">HTML
+                    <input type="radio" #htmltypeRadio name="board_type" value="html" (change)="group.board_type=htmltypeRadio.value" [checked]="group.board_type === 'html'">HTML
                   </label>
                   <label class="radio-inline">
                     <input type="radio" #board_type name="board_type" value="text" (change)="group.board_type=board_type.value" [checked]="group.board_type === 'text'">TEXT
@@ -180,10 +180,10 @@
               <span class="btn-group" role="group">
                 <button type="submit" class="btn btn-default btn-sm">확인</button>
                 <a (click)="goBack();" class="btn btn-default btn-sm" role="button">취소</a>
-              </span> 
-            </div>  
+              </span>
+            </div>
           </form>
-        </div>        
+        </div>
       </div>
     </div>
   </div>
