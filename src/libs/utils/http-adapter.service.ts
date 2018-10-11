@@ -5,15 +5,19 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 
+import { Config, Server } from './utils';
+
 @Injectable()
 export class HttpAdapterService {
 
-	domainUrl: string = window['sux_resource_url'];
+	domainUrl: string = '';
 	isFullDomain: boolean = false;
 
 	constructor(
 		private http: Http,
 		private jsonp: Jsonp) {
+
+		this.domainUrl = Config.API_URLS[Server.domain];
 
 		let reg = new RegExp(/^(http\:\/\/|https\:\/\/)?((\w+[.]\w+)+([.]\w+)?)|(localhost)+/);
 		if (reg.test(this.domainUrl) === true) {
